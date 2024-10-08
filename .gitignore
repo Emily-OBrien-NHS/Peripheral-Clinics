@@ -4,6 +4,12 @@
 # any excel files
 *.xlsx
 
+# any csv files
+*.csv
+
+# any pbix files
+*.pbix
+
 #any pptx files
 *.pptx
 
