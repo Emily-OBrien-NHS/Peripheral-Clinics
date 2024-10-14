@@ -1,5 +1,7 @@
-import os
-os.chdir('G:/PerfInfo/Performance Management/OR Team/BI Reports/Peripheral Clinics')
-from FullCode import main
+import importlib.util
+spec = importlib.util.spec_from_file_location("Peripheral Clinics.FullCode",
+                                              'G:/PerfInfo/Performance Management/OR Team/BI Reports/Peripheral Clinics/FullCode.py')
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
 
-results, opatsFull, results_mapping = main()
+clinic_results, outpatient_results, mapping_results = module.main()

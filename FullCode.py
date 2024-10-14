@@ -594,6 +594,8 @@ def run_specialty_maps(results, per_uniFull, derrifords, peripherals):
                                                     'Due to Attend':'sum',
                                                     'latitude':'first',
                                                     'longitude':'first'}))
+    results['Bubble Size'] = results['ideal_pats'].fillna(results['Booked']
+                                                  + results['Due to Attend'])
     return results
 
 
@@ -606,9 +608,11 @@ def main():
     derrifords, peripherals, opatsFull, per_uniFull, per_uni = run_main_analysis(opatsFull)
     results, opatsFull = run_travel_times(derrifords, peripherals, opatsFull, per_uniFull, per_uni)
     results_mapping = run_specialty_maps(results.copy(), per_uniFull, derrifords, peripherals)
+    opatsFull.columns = ['pasid', 'Patient Postcode', 'Specialty', 'ClinicCode', 'WL ClinicCode', 
+    'Appointment Type', 'See by Date', 'Cons', 'Diag', 'Planned', 'OP Type', 'Priority', 'Waiting List Name',
+    'Local Category', 'Closest Location', 'Time to Closest Location (mins)', 'Currrent Location',
+    'Time to Current Location (mins)', 'Closest Specialty Location', 'Time to Closest Specialty Location (mins)',
+    'Time Saved if Booked into Closest Specialty Location (mins)', 'Time Saved if Booked into Closest Location (mins)']
     return results, opatsFull, results_mapping
 
 results, opatsFull, results_mapping = main()
-results.to_csv('results.csv')
-opatsFull.to_csv('opatsFull.csv')
-results_mapping.to_csv('results_mapping.csv')
