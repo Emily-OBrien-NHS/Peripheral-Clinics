@@ -615,4 +615,4 @@ def main():
     'Time Saved if Booked into Closest Specialty Location (mins)', 'Time Saved if Booked into Closest Location (mins)']
     return results, opatsFull, results_mapping
 
-results, opatsFull, results_mapping = main()
+#results, opatsFull, results_mapping = main()
