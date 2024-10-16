@@ -594,8 +594,9 @@ def run_specialty_maps(results, per_uniFull, derrifords, peripherals):
                                                     'Due to Attend':'sum',
                                                     'latitude':'first',
                                                     'longitude':'first'}))
-    results['Bubble Size'] = results['ideal_pats'].fillna(results['Booked']
+    results['Bubble Size'] = (results['ideal_pats'].fillna(results['Booked']
                                                   + results['Due to Attend'])
+                                                  .astype(int))
     return results
 
 
